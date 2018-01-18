@@ -7,6 +7,8 @@
 # Ubuntu:
 #   apt-get install -y apache2-utils
 #----------------------------
+CONCURRENT_USER=100
+ELAPSED_SECOND=86400
 
 URL="${1}"
 if [[ -z "${URL}" ]]; then
@@ -17,10 +19,12 @@ fi
 
 for((i=1;;i++)); do
   echo "-----------------------------------------------------------------------------"
-  echo "# Round ${i}"
-  echo "${URL}"
+  echo "Concurrent user : ${CONCURRENT_USER}"
+  echo "Elapsed(s)      : ${ELAPSED_SECOND}"
+  echo "Round           : ${i}"
+  echo "URL             : ${URL}"
   echo "-----------------------------------------------------------------------------"
-  ab -c 100 -t 86400 $URL
+  ab -c $CONCURRENT_USER -t $ELAPSED_SECOND $URL
   RC=$?
 
   #------------------------
