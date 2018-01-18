@@ -32,7 +32,7 @@ for((i=1;;i++)); do
   # Exit if RC == 1
   # RC code: 1 ---> Ctrl + c
   #------------------------
-  if [[ $RC -eq 1 ]]; then
+  if [[ $RC -eq 1 ]] || [[ $RC -eq 22 ]] ; then
     echo
     echo "terminated...."
     echo
