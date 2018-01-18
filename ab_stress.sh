@@ -9,6 +9,12 @@
 #----------------------------
 
 URL="${1}"
+if [[ -z "${URL}" ]]; then
+  echo "URL is not specified..."
+  echo
+  exit
+fi
+
 for((i=1;;i++)); do
   echo "------------------------"
   echo "Stress tool (ab) Round  $i on $URL"
