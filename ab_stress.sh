@@ -8,7 +8,7 @@
 #----------------------------
 # --- Define var---
 CONCURRENT_USER=100
-ELAPSED_SECOND=86400
+EXECTIME_SECOND=86400
 
 # --- Start to stress test ---
 URL="${1}"
@@ -21,11 +21,11 @@ fi
 for((i=1;;i++)); do
   echo "-----------------------------------------------------------------------------"
   echo "Concurrent user : ${CONCURRENT_USER}"
-  echo "Elapsed(s)      : ${ELAPSED_SECOND}"
+  echo "Exec time(s)      : ${EXECTIME_SECOND}"
   echo "Round           : ${i}"
   echo "URL             : ${URL}"
   echo "-----------------------------------------------------------------------------"
-  ab -c $CONCURRENT_USER -t $ELAPSED_SECOND $URL
+  ab -c $CONCURRENT_USER -t $EXECTIME_SECOND $URL
   RC=$?
 
   #------------------------
