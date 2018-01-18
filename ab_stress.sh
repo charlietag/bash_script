@@ -5,13 +5,19 @@ for((i=1;;i++)); do
   echo "Stress tool (ab) Round  $i on $URL"
   echo "------------------------"
   ab -c 100 -t 86400 $URL
-  echo
-
-  # RC code: 1 ---> Ctrl + c
   RC=$?
+
+  #------------------------
+  # Exit if RC == 1
+  # RC code: 1 ---> Ctrl + c
+  #------------------------
   if [[ $RC -eq 1 ]]; then
+    echo
     echo "terminated...."
     echo
     exit
   fi
+  #------------------------
+
+  echo
 done
