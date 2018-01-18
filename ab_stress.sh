@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #----------------------------
 # Package required
 # RedHat:
@@ -7,9 +6,11 @@
 # Ubuntu:
 #   apt-get install -y apache2-utils
 #----------------------------
+# --- Define var---
 CONCURRENT_USER=100
 ELAPSED_SECOND=86400
 
+# --- Start to stress test ---
 URL="${1}"
 if [[ -z "${URL}" ]]; then
   echo "URL is not specified..."
