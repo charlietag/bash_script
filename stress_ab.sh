@@ -7,6 +7,7 @@ for((i=1;;i++)); do
   ab -c 100 -t 86400 $URL
   echo
 
+  # RC code: 1 ---> Ctrl + c
   RC=$?
   if [[ $RC -eq 1 ]]; then
     echo "terminated...."
