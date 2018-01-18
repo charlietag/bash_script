@@ -21,7 +21,7 @@ fi
 for((i=1;;i++)); do
   echo "-----------------------------------------------------------------------------"
   echo "Concurrent user : ${CONCURRENT_USER}"
-  echo "Exec time(s)      : ${EXECTIME_SECOND}"
+  echo "Exec time(s)    : ${EXECTIME_SECOND}"
   echo "Round           : ${i}"
   echo "URL             : ${URL}"
   echo "-----------------------------------------------------------------------------"
