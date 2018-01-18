@@ -1,4 +1,13 @@
 #!/bin/bash
+
+#----------------------------
+# Package required
+# RedHat:
+#   yum install -y httpd-tools
+# Ubuntu:
+#   apt-get install -y apache2-utils
+#----------------------------
+
 URL="${1}"
 for((i=1;;i++)); do
   echo "------------------------"
