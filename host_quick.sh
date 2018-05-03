@@ -9,5 +9,12 @@ if [[ -z "${URL}" ]]; then
   exit
 fi
 
-URI_BASE="$(echo "${URL}" | awk -F'/' '{print $3}')"
+IF_PROTO="$(echo "${URL}" | grep '/')"
+
+if [[ -n $IF_PROTO ]]; then
+  URI_BASE="$(echo "${URL}" | awk -F'/' '{print $3}')"
+else
+  URI_BASE="$URL"
+fi
+
 host $URI_BASE
