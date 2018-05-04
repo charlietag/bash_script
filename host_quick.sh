@@ -17,4 +17,8 @@ else
   URI_BASE="$URL"
 fi
 
+echo "--------------------"
+echo "    $URI_BASE"
+echo "--------------------"
 host $URI_BASE
+echo ""
