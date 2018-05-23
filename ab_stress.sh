@@ -7,15 +7,20 @@
 #   apt-get install -y apache2-utils
 #----------------------------
 # --- Define var---
-CONCURRENT_USER=100
 EXECTIME_SECOND=86400
 
 # --- Start to stress test ---
 URL="${1}"
 if [[ -z "${URL}" ]]; then
   echo "URL is not specified..."
+  echo "Usage: $(basename $0) http://sample.com/ 50"
   echo
   exit
+fi
+
+CONCURRENT_USER="${2}"
+if [[ -z "${CONCURRENT_USER}" ]]; then
+  CONCURRENT_USER=100
 fi
 
 for((i=1;;i++)); do
