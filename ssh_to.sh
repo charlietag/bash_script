@@ -1,4 +1,21 @@
 #!/bin/bash
+
+# -----------------------------------------------------------------------------------------
+# Color
+# -----------------------------------------------------------------------------------------
+COLOR_RED='\033[1;31m'
+COLOR_DARK_RED='\033[0;31m'
+COLOR_GREEN='\033[1;32m'
+COLOR_DARK_GREEN='\033[0;32m'
+COLOR_YELLOW='\033[1;33m'
+COLOR_DARK_YELLOW='\033[0;33m'
+COLOR_BLUE='\033[1;34m'
+COLOR_DARK_BLUE='\033[0;34m'
+COLOR_CYAN='\033[1;36m'
+COLOR_DARK_CYAN='\033[0;36m'
+COLOR_MAGENTA='\033[1;35m'
+COLOR_DARK_MAGENTA='\033[0;35m'
+COLOR_END='\033[00m'
 # -----------------------------------------------------------------------------------------
 # Setup config
 # -----------------------------------------------------------------------------------------
@@ -50,8 +67,8 @@ do
   case $argv in
     c)
       INPUT_FILE=$OPTARG
-      CONFIG_FILE_EXISTS="$(echo "${INPUT_FILE}" | grep "\.cfg$" )"
-      CONFIG_FILE="${CURRENT_PATH}/${INPUT_FILE}"
+      CONFIG_FILE_EXISTS="$(ls ${CURRENT_PATH}/ | grep "${INPUT_FILE}" | grep "\.cfg$" | head -n 1)"
+      CONFIG_FILE="${CURRENT_PATH}/${CONFIG_FILE_EXISTS}"
       ;;
     l)
       LIST_CONFIG="Y"
@@ -103,5 +120,9 @@ fi
 # SSH TO REMOTE SERVER
 # -----------------------------------------------------------------------------------------
 SSH_KEEP_ALIVE=30
-echo "ssh -o ServerAliveInterval=${SSH_KEEP_ALIVE} ${REMOTE_USER}@${REMOTE_HOST} -p ${REMOTE_PORT}"
+echo ""
+echo -e "Reading config file: ${COLOR_GREEN}${CONFIG_FILE}${COLOR_END}"
+echo ""
+echo -e "ssh -o ServerAliveInterval=${SSH_KEEP_ALIVE} ${COLOR_RED}${REMOTE_USER}${COLOR_END}${COLOR_GREEN}@${COLOR_END}${COLOR_YELLOW}${REMOTE_HOST}${COLOR_END} -p ${COLOR_GREEN}${REMOTE_PORT}${COLOR_END}"
+echo ""
 ssh -o ServerAliveInterval=${SSH_KEEP_ALIVE} ${REMOTE_USER}@${REMOTE_HOST} -p ${REMOTE_PORT}
