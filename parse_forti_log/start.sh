@@ -42,7 +42,8 @@ if [[ ! -f "${FILENAME}" ]] ; then
   show_usage
 fi
 
-if [[ ! ${FILENAME} =~ ^ForwardTrafficLog-disk-[\w\.-]+\.log$ ]] ; then
+FILE_NAME_CHECK="$(echo "${FILENAME}"  | grep -Eo "^ForwardTrafficLog-disk-[[:alnum:][:punct:]]+\.log$")"
+if [[ -z "${FILE_NAME_CHECK}" ]] ; then
   echo "WARN: Check filename !"
   echo "Example: ForwardTrafficLog-disk-2021-12-15T13_22_42.182756.log"
   show_usage
